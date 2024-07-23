@@ -80,7 +80,7 @@ export default function Home() {
         <StatusBar style="auto" />
         <Image
           blurRadius={60}
-          source={require("../assets/images/bg.png")}
+          source={require("../assets/images/bg-main3.jpg")}
           className="w-full absolute h-full"
         />
         {loading ? (
