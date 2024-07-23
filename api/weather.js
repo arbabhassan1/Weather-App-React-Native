@@ -1,16 +1,19 @@
 import axios from "axios";
-import { API_KEY } from "../constants/index";
-
+import { apiKey } from "../constants/index";
+// const API_KEY = "6160ec9788d74c1bac2151246231009";
 const forecastEndpoint = (params) =>
-  `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${params.cityName}&days=${params.days}&aqi=no&alerts=no`;
+  `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${params.cityName}&days=${params.days}&aqi=no&alerts=no`;
 
 const locationEndpoint = (params) =>
-  `https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${params.cityName}`;
+  `https://api.weatherapi.com/v1/search.json?key=${apiKey}&q=${params.cityName}`;
 
 const apiCall = async (endpoint) => {
   const options = {
     method: "GET",
     url: endpoint,
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
 
   try {
@@ -26,5 +29,7 @@ export const fetchForecast = (params) => {
 };
 
 export const fetchLocations = (params) => {
+  //   console.log(apiKey);
+  //   console.log(locationEndpoint(params));
   return apiCall(locationEndpoint(params));
 };
